@@ -10,8 +10,8 @@
 
 ## 🛠 Tools & Technologies
 - **Languages:** SQL, Python
-- **Databases:** SQL Server, MySQL, PostgreSQL
-- **Visualization:** Power BI, Tableau, Looker Studio
+- **Databases:** SQL Server
+- **Visualization:** Power BI
 - **Other:** Excel, Jupyter Notebook
 
 ---

@@ -17,7 +17,8 @@
 ---
 
 ## 📂 Featured Projects
-- Projects
+[➡️ View my full portfolio](./Portfolio.md)
+
 
 ---
 

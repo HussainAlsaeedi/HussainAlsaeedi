@@ -12,7 +12,7 @@
 - **Languages:** SQL, Python
 - **Databases:** SQL Server
 - **Visualization:** Power BI
-- **Other:** Excel, Jupyter Notebook
+
 
 ---
 

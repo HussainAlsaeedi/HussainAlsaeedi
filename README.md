@@ -1,18 +1,49 @@
 # 👋 Hi, I'm Hussain Alsaeedi
 
-**Data Analyst | Business Intelligence Analyst | SQL Developer**
+### Data Analyst | Business Intelligence | Power BI | SQL | Python
 
-💼 A data enthusiast with experience in **SQL, Python, Power BI, and data pipeline automation**.  
-🔍 Skilled in **data analysis, dashboard development, and database optimization**.  
-📈 Passionate about turning data into actionable insights.
+I'm a data professional with 3+ years of experience transforming raw data into actionable business insights through analytics, reporting, and dashboard development.
+
+I specialize in SQL, Power BI, Python, SAP data analysis, and business intelligence solutions.
 
 ---
 
-## 🛠 Tools & Technologies
-- **Languages:** SQL, Python
-- **Databases:** SQL Server
-- **Visualization:** Power BI
+## 🚀 About Me
 
+- 📍 Riyadh, Saudi Arabia
+- 🎓 Master's Student in Data Science
+- 💼 3+ years of experience in Data Analytics & Business Intelligence
+- 📊 Passionate about building dashboards and KPI reporting solutions
+- 🧠 Interested in Data Engineering, Cloud Analytics, and Machine Learning
+
+---
+
+## 🛠 Tech Stack
+
+### Analytics
+- Power BI
+- DAX
+- Power Query
+- Excel
+
+### Programming
+- SQL
+- Python
+- R
+
+### Databases
+- SQL Server
+- SAP HANA
+
+### Cloud
+- Microsoft Azure
+- Microsoft Fabric
+
+### Tools
+- Git
+- GitHub
+- Jupyter Notebook
+- VS Code
 
 ---
 

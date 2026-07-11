@@ -4,7 +4,7 @@
 
 I'm a data professional with 3+ years of experience transforming raw data into actionable business insights through analytics, reporting, and dashboard development.
 
-I specialize in SQL, Power BI, Python, SAP data analysis, and business intelligence solutions.
+I specialize in SQL, Power BI, Python, SAP data analysis, and business intelligence.
 
 ---
 
@@ -33,7 +33,7 @@ I specialize in SQL, Power BI, Python, SAP data analysis, and business intellige
 
 ### Databases
 - SQL Server
-- SAP HANA
+
 
 ### Cloud
 - Microsoft Azure
@@ -53,6 +53,3 @@ I specialize in SQL, Power BI, Python, SAP data analysis, and business intellige
 
 ---
 
-## 📬 Connect with Me
-- [LinkedIn]
-- [Email]

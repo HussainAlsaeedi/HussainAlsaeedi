@@ -6,8 +6,6 @@
 
 This project builds an end-to-end analytics solution for a fictional online retailer. The objective is not simply to visualize sales: it is to create a reliable analytical model that explains **where revenue comes from, how customers behave, which products drive performance, and where the business has opportunities to improve retention and profitability**.
 
-All data used in this project is independent synthetic/public-style data and is unrelated to any employer.
-
 ---
 
 ## Business Problem

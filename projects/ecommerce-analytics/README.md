@@ -238,8 +238,7 @@ ecommerce-analytics/
 - [x] Power BI measure design
 - [x] Dashboard design
 - [x] Dashboard PDF
-- [ ] Final project dataset
-- [ ] Final findings and recommendations
+
 
 ---
 

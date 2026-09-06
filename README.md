@@ -6,7 +6,7 @@ I’m a data analytics professional focused on turning raw data into clear busin
 
 My portfolio is built around complete business cases rather than isolated dashboards: each project starts with a business problem, moves through data preparation and analysis, and ends with measurable insights and recommendations.
 
-[**View Portfolio Website**](./docs/index.html) · [**Browse All Projects**](./Portfolio.md)
+· [**Browse All Projects**](./Portfolio.md)
 
 ---
 

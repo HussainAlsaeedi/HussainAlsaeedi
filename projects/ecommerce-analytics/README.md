@@ -200,26 +200,6 @@ DIVIDE([Gross Profit], [Revenue])
 
 ---
 
-## Dashboard
-
-### Executive Overview
-
-![Executive Overview](images/executive-overview.svg)
-
-### Customer Analytics
-
-![Customer Analytics](images/customer-analytics.svg)
-
-### Product Analytics
-
-![Product Analytics](images/product-analytics.svg)
-
-### Retention & Returns
-
-![Retention and Returns](images/retention-returns.svg)
-
----
-
 ## Data Quality Checks
 
 The project will explicitly validate:
@@ -243,10 +223,10 @@ The project will explicitly validate:
 - [x] SQL analysis examples
 - [x] Python transformation workflow
 - [x] Power BI measure design
-- [x] Dashboard visuals
 - [ ] Final project dataset
 - [ ] Complete SQL analysis file
 - [ ] Complete Python notebook
+- [ ] Dashboard screenshots
 - [ ] Final findings and recommendations
 
 ---

@@ -2,30 +2,62 @@
 
 > **Flagship Portfolio Project** · SQL · Python · Power BI · DAX · Data Modeling
 
-## Overview
+An end-to-end analytics project focused on turning transactional e-commerce data into clear business insights across **revenue, customers, products, profitability, repeat purchasing, and returns**.
 
-This project builds an end-to-end analytics solution for a fictional online retailer. The objective is not simply to visualize sales: it is to create a reliable analytical model that explains **where revenue comes from, how customers behave, which products drive performance, and where the business has opportunities to improve retention and profitability**.
+### Project Files
+
+[📊 View Power BI Dashboard](./Dashboard%20Pictures.pdf) · [🗄️ View SQL Analysis](./sql/analysis.sql) · [🐍 View Python Analysis](./python/analysis.py)
 
 ---
 
-## Business Problem
+## Project Overview
 
-The retailer has transactional data across orders, customers, products, order items, returns, and acquisition channels. Management currently sees total sales but cannot easily answer deeper questions about growth or customer behavior.
+The objective is to build a complete analytical solution for an online retailer rather than simply visualize sales totals. The project combines SQL, Python, dimensional modeling, DAX, and Power BI to analyze performance and support business decisions.
 
-The analysis is designed to answer:
+### Business Questions
 
 1. How are revenue, orders, and average order value changing over time?
 2. Which product categories contribute the most revenue?
 3. Which customer segments are most valuable?
 4. How much revenue comes from repeat customers?
-5. Which products have high sales but unusually high return rates?
+5. Which products combine strong sales with weak margins or high return rates?
 6. Which acquisition channels generate valuable customers?
-7. Where are the strongest and weakest geographic markets?
-8. Which customers should be prioritized for retention activity?
+7. Where are the strongest and weakest markets?
+8. Which customers should be prioritized for retention?
 
 ---
 
-## Planned Data Model
+## Power BI Dashboard
+
+The dashboard presents the analytical results through four business views:
+
+| View | Focus |
+|---|---|
+| **Executive Overview** | Revenue, gross profit, orders, customers, AOV, monthly trends, category and market performance |
+| **Customer Analytics** | New vs repeat customers, customer segments, acquisition channels, purchase behavior and cohorts |
+| **Product Analytics** | Product/category revenue, gross margin, units sold, top products and low-margin products |
+| **Retention & Returns** | Repeat purchase rate, return reasons, abnormal product return rates and retention opportunities |
+
+### [Open the full dashboard →](./Dashboard%20Pictures.pdf)
+
+---
+
+## KPI Framework
+
+| KPI | Definition |
+|---|---|
+| **Revenue** | Gross item revenue less applicable discounts |
+| **Orders** | Distinct completed orders |
+| **Customers** | Distinct purchasing customers |
+| **Average Order Value** | Revenue / Orders |
+| **Gross Profit** | Revenue - Product Cost |
+| **Gross Margin %** | Gross Profit / Revenue |
+| **Repeat Customer Rate** | Customers with more than one order / Purchasing customers |
+| **Return Rate** | Returned units / Sold units |
+
+---
+
+## Data Model
 
 ```text
                  DimCustomer
@@ -42,61 +74,31 @@ DimDate ------ FactOrders ------ DimChannel
 
 ### Core Tables
 
-**customers**
-- customer_id
-- signup_date
-- country
-- city
-- acquisition_channel
-
-**orders**
-- order_id
-- customer_id
-- order_date
-- order_status
-- shipping_amount
-- discount_amount
-
-**order_items**
-- order_id
-- product_id
-- quantity
-- unit_price
-- unit_cost
-
-**products**
-- product_id
-- product_name
-- category
-- subcategory
-
-**returns**
-- return_id
-- order_id
-- product_id
-- return_date
-- return_reason
-
----
-
-## KPI Definitions
-
-| KPI | Definition |
+| Table | Purpose |
 |---|---|
-| Revenue | Gross item revenue less applicable discounts |
-| Orders | Distinct completed orders |
-| Customers | Distinct purchasing customers |
-| Average Order Value | Revenue / Orders |
-| Gross Profit | Revenue - Product Cost |
-| Gross Margin % | Gross Profit / Revenue |
-| Repeat Customer Rate | Customers with >1 order / Purchasing customers |
-| Return Rate | Returned units / Sold units |
+| `customers` | Customer profile, signup date, location and acquisition channel |
+| `orders` | Order header, customer, date, status, shipping and discounts |
+| `order_items` | Product-level quantity, price and cost |
+| `products` | Product, category and subcategory attributes |
+| `returns` | Returned products, dates and return reasons |
 
 ---
 
 ## SQL Analysis
 
-### Customer Value Segmentation
+The SQL layer covers monthly performance, customer segmentation, product ranking, repeat purchasing, revenue concentration, and data-quality validation.
+
+Key techniques used:
+
+- CTEs
+- Window functions
+- `LAG()` for month-over-month comparison
+- `DENSE_RANK()` for product ranking
+- `NTILE()` for customer revenue concentration
+- Conditional segmentation
+- Data-quality checks
+
+### Example — Customer Value Segmentation
 
 ```sql
 WITH customer_value AS (
@@ -114,7 +116,7 @@ SELECT
         ELSE 'High-frequency'
     END AS customer_segment,
     COUNT(*) AS customers,
-    SUM(total_revenue) AS segment_revenue,
+    SUM(total_revenue) AS revenue,
     AVG(total_revenue) AS avg_customer_revenue
 FROM customer_value
 GROUP BY
@@ -123,56 +125,45 @@ GROUP BY
         WHEN total_orders BETWEEN 2 AND 4 THEN 'Repeat'
         ELSE 'High-frequency'
     END
-ORDER BY segment_revenue DESC;
+ORDER BY revenue DESC;
 ```
 
-### Monthly Revenue Growth
-
-```sql
-WITH monthly_revenue AS (
-    SELECT
-        DATEFROMPARTS(YEAR(order_date), MONTH(order_date), 1) AS month_start,
-        SUM(net_revenue) AS revenue
-    FROM analytics_orders
-    GROUP BY DATEFROMPARTS(YEAR(order_date), MONTH(order_date), 1)
-)
-SELECT
-    month_start,
-    revenue,
-    LAG(revenue) OVER (ORDER BY month_start) AS previous_month_revenue,
-    (revenue - LAG(revenue) OVER (ORDER BY month_start)) /
-        NULLIF(LAG(revenue) OVER (ORDER BY month_start), 0) AS mom_growth
-FROM monthly_revenue
-ORDER BY month_start;
-```
+**[View complete SQL analysis →](./sql/analysis.sql)**
 
 ---
 
-## Python Workflow
+## Python Analysis
+
+Python is used to load, validate, combine, and transform the source tables into an analysis-ready dataset.
+
+The workflow includes:
+
+- CSV ingestion with pandas
+- Primary-key validation
+- Referential-integrity checks
+- Invalid quantity/price/cost checks
+- Many-to-one merge validation
+- Revenue, cost and gross-profit calculations
+- Monthly KPI aggregation
+- Month-over-month growth
+- Customer purchase-frequency segmentation
+
+### Example
 
 ```python
-import pandas as pd
-
-orders = pd.read_csv('data/orders.csv', parse_dates=['order_date'])
-customers = pd.read_csv('data/customers.csv', parse_dates=['signup_date'])
-items = pd.read_csv('data/order_items.csv')
-products = pd.read_csv('data/products.csv')
-
-# Validate uniqueness
-assert orders['order_id'].is_unique
-assert customers['customer_id'].is_unique
-assert products['product_id'].is_unique
-
 analysis = (
     items
-    .merge(orders, on='order_id', validate='many_to_one')
-    .merge(products, on='product_id', validate='many_to_one')
+    .merge(orders, on="order_id", how="left", validate="many_to_one")
+    .merge(products, on="product_id", how="left", validate="many_to_one")
+    .merge(customers, on="customer_id", how="left", validate="many_to_one")
 )
 
-analysis['gross_revenue'] = analysis['quantity'] * analysis['unit_price']
-analysis['product_cost'] = analysis['quantity'] * analysis['unit_cost']
-analysis['gross_profit'] = analysis['gross_revenue'] - analysis['product_cost']
+analysis["gross_revenue"] = analysis["quantity"] * analysis["unit_price"]
+analysis["product_cost"] = analysis["quantity"] * analysis["unit_cost"]
+analysis["gross_profit"] = analysis["gross_revenue"] - analysis["product_cost"]
 ```
+
+**[View complete Python workflow →](./python/analysis.py)**
 
 ---
 
@@ -200,37 +191,58 @@ DIVIDE([Gross Profit], [Revenue])
 
 ---
 
-## Data Quality Checks
+## Data Quality
 
-The project will explicitly validate:
+Before analysis, the workflow checks for:
 
 - Duplicate primary keys
-- Missing customer/product references
+- Missing customer or product references
 - Invalid quantities
 - Negative prices or costs
-- Orders without items
+- Orders without valid relationships
 - Returns without valid orders
-- Dates outside the expected reporting range
 - Unexpected order statuses
 
 ---
 
-## Project Deliverables
+## Repository Structure
+
+```text
+ecommerce-analytics/
+│
+├── README.md
+├── Dashboard Pictures.pdf
+│
+├── sql/
+│   └── analysis.sql
+│
+└── python/
+    └── analysis.py
+```
+
+---
+
+## Skills Demonstrated
+
+**SQL** · **Python** · **pandas** · **Power BI** · **DAX** · **Data Modeling** · **Data Cleaning** · **Data Quality** · **Customer Segmentation** · **Business Intelligence**
+
+---
+
+## Project Status
 
 - [x] Business case and analytical design
 - [x] Data model specification
-- [x] KPI definitions
-- [x] SQL analysis examples
-- [x] Python transformation workflow
+- [x] KPI framework
+- [x] SQL analysis
+- [x] Python analysis workflow
 - [x] Power BI measure design
+- [x] Dashboard design
+- [x] Dashboard PDF
 - [ ] Final project dataset
-- [ ] Complete SQL analysis file
-- [ ] Complete Python notebook
-- [ ] Dashboard screenshots
 - [ ] Final findings and recommendations
 
 ---
 
-## Why This Project Matters
+## What This Project Demonstrates
 
-A strong analytics project should show more than software knowledge. This case study demonstrates how SQL, Python, data modeling, BI, and business reasoning work together to turn transactional data into decisions.
+This project demonstrates the complete analytical workflow: **understanding a business problem, structuring data, validating data quality, analyzing with SQL and Python, modeling KPIs, and communicating results through Power BI.**

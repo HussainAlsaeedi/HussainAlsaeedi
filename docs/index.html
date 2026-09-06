@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hussain Alsaeedi - Data Analytics Portfolio">
+<title>Hussain Alsaeedi | Data Analytics Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<a class="logo" href="#home">HA<span>.</span></a>
+<nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#process">Process</a></nav>
+<a class="nav-cta" href="https://github.com/HussainAlsaeedi">GitHub ↗</a>
+</header>
+<main>
+<section class="hero" id="home">
+<div class="hero-copy">
+<p class="eyebrow">DATA ANALYTICS · BUSINESS INTELLIGENCE · AUTOMATION</p>
+<h1>Turning raw data into <em>clear decisions.</em></h1>
+<p class="intro">I build end-to-end analytics projects using SQL, Python, Power BI, data modeling, automation, and business storytelling.</p>
+<div class="actions"><a class="primary" href="#projects">Explore Projects</a><a class="secondary" href="https://github.com/HussainAlsaeedi">View GitHub</a></div>
+<div class="stats"><div><strong>6</strong><span>Portfolio projects</span></div><div><strong>5+</strong><span>Core analytics tools</span></div><div><strong>End-to-End</strong><span>Raw data → insight</span></div></div>
+</div>
+<div class="code-card">
+<div class="dots"><i></i><i></i><i></i></div>
+<pre>WITH customer_value AS (
+  SELECT customer_id,
+         COUNT(DISTINCT order_id) AS orders,
+         SUM(net_revenue) AS revenue
+  FROM orders
+  GROUP BY customer_id
+)
+SELECT customer_segment,
+       SUM(revenue) AS revenue
+FROM customer_value
+GROUP BY customer_segment;</pre>
+<div class="insight"><small>ANALYTICAL MINDSET</small><b>Start with the business question.</b><p>Then use the right combination of data, code, modeling, and visualization to answer it.</p></div>
+</div>
+</section>
+<section id="about">
+<div class="section-title"><small>01 / ABOUT</small><h2>Analytics that connects technical work to business impact.</h2></div>
+<div class="about"><p class="large">I focus on practical analytical problems: preparing messy data, querying datasets, building reliable metrics, identifying patterns, and communicating findings clearly.</p><div class="points"><article><b>Business-first</b><p>Define the decision before choosing the metric or visualization.</p></article><article><b>End-to-end</b><p>Cover preparation, analysis, modeling, validation, and delivery.</p></article><article><b>Reproducible</b><p>Document assumptions and keep analytical logic transparent.</p></article></div></div>
+</section>
+<section id="projects">
+<div class="section-title"><small>02 / PROJECTS</small><h2>Featured work</h2><p>Independent portfolio projects using synthetic or public-style data.</p></div>
+<div class="projects">
+<article class="project flagship"><div><small>01 · FLAGSHIP</small><h3>E-Commerce Revenue & Customer Analytics</h3><p>End-to-end analysis of revenue, customers, products, repeat purchases, returns, and acquisition channels.</p><div class="tags"><span>SQL</span><span>Python</span><span>Power BI</span><span>DAX</span><span>Data Modeling</span></div><a href="../projects/ecommerce-analytics/README.md">View project →</a></div><div class="chart"><i style="height:42%"></i><i style="height:60%"></i><i style="height:52%"></i><i style="height:78%"></i><i style="height:70%"></i><i style="height:94%"></i></div></article>
+<article class="project"><small>02 · MACHINE LEARNING</small><h3>Customer Churn Analytics</h3><p>EDA, feature engineering, model comparison, churn probability, and actionable retention segments.</p><div class="tags"><span>Python</span><span>pandas</span><span>scikit-learn</span></div><b class="soon">COMING NEXT</b></article>
+<article class="project"><small>03 · OPERATIONS</small><h3>Supply Chain Performance</h3><p>Supplier reliability, lead time, fill rate, inventory coverage, and stockout risk.</p><div class="tags"><span>SQL</span><span>Power BI</span><span>DAX</span></div><b class="soon">PLANNED</b></article>
+<article class="project"><small>04 · FORECASTING</small><h3>Retail Demand Forecasting</h3><p>Seasonality, lag features, rolling windows, baseline models, and forecast evaluation.</p><div class="tags"><span>Python</span><span>Time Series</span></div><b class="soon">PLANNED</b></article>
+<article class="project"><small>05 · SQL</small><h3>Advanced SQL Analytics</h3><p>Business cases using CTEs, window functions, ranking, cohorts, growth, and data-quality logic.</p><div class="tags"><span>SQL</span><span>CTEs</span><span>Window Functions</span></div><b class="soon">PLANNED</b></article>
+<article class="project"><small>06 · AUTOMATION</small><h3>Python Reporting Pipeline</h3><p>File ingestion, schema validation, data-quality checks, transformation, and reporting outputs.</p><div class="tags"><span>Python</span><span>pandas</span><span>ETL</span></div><b class="soon">PLANNED</b></article>
+</div>
+</section>
+<section id="skills"><div class="section-title"><small>03 / SKILLS</small><h2>Analytics toolkit</h2></div><div class="skill-grid"><article><b>Analysis</b><p>SQL<br>Python<br>pandas<br>Excel<br>Statistics</p></article><article><b>Business Intelligence</b><p>Power BI<br>DAX<br>Power Query<br>KPI Design<br>Data Modeling</p></article><article><b>Data & Automation</b><p>ETL<br>Data Cleaning<br>Validation<br>SQL Server<br>Microsoft Fabric</p></article><article><b>Applied Analytics</b><p>EDA<br>Forecasting<br>Segmentation<br>Machine Learning<br>Business Storytelling</p></article></div></section>
+<section id="process"><div class="section-title"><small>04 / PROCESS</small><h2>How I approach a data problem</h2></div><div class="process"><article><span>01</span><b>Frame</b><p>Define the question.</p></article><article><span>02</span><b>Prepare</b><p>Clean and validate.</p></article><article><span>03</span><b>Analyze</b><p>Explore and test.</p></article><article><span>04</span><b>Model</b><p>Build reliable metrics.</p></article><article><span>05</span><b>Communicate</b><p>Turn findings into action.</p></article></div></section>
+<section class="contact"><small>LET'S CONNECT</small><h2>Data should make the next decision easier.</h2><p>Explore my projects and source code on GitHub.</p><a class="primary" href="https://github.com/HussainAlsaeedi">github.com/HussainAlsaeedi ↗</a></section>
+</main>
+<footer><span>© 2026 Hussain Alsaeedi</span><span>Data Analytics Portfolio</span></footer>
+</body>
+</html>

@@ -19,26 +19,6 @@ End-to-end analysis of an online retailer covering revenue growth, customer beha
 
 [View Case Study](./projects/ecommerce-analytics/README.md)
 
-### Customer Churn Analytics
-**Python · pandas · scikit-learn · EDA**
-
-Customer churn exploration and predictive modeling focused on identifying high-risk segments and translating model output into retention actions.
-
-*Coming next*
-
-### Supply Chain Performance Analytics
-**SQL · Power BI · Operations Analytics**
-
-Supplier reliability, delivery performance, inventory health, stockout risk, and lead-time analysis across a multi-warehouse environment.
-
-*Coming next*
-
-### Retail Demand Forecasting
-**Python · Time Series · Forecasting**
-
-Demand forecasting using historical sales, seasonality, promotions, lag features, and rolling averages with benchmark-based model evaluation.
-
-*Coming next*
 
 ---
 

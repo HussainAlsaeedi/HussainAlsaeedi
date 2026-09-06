@@ -1,7 +1,6 @@
 # Data Analytics Portfolio
 
-This portfolio contains independent data analytics projects built from public or synthetic data. No employer or confidential company data is used.
-
+This portfolio contains independent data analytics projects built from public or synthetic data.
 ## Portfolio Strategy
 
 The goal is to demonstrate the complete analytics lifecycle:

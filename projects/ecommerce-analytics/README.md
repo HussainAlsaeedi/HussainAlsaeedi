@@ -163,7 +163,6 @@ assert orders['order_id'].is_unique
 assert customers['customer_id'].is_unique
 assert products['product_id'].is_unique
 
-# Build analytical order-item dataset
 analysis = (
     items
     .merge(orders, on='order_id', validate='many_to_one')
@@ -201,37 +200,23 @@ DIVIDE([Gross Profit], [Revenue])
 
 ---
 
-## Dashboard Structure
+## Dashboard
 
-### Page 1 — Executive Overview
-- Revenue
-- Gross Profit
-- Orders
-- Customers
-- Average Order Value
-- Monthly revenue trend
-- Revenue by category
-- Revenue by market
+### Executive Overview
 
-### Page 2 — Customer Analytics
-- New vs repeat customers
-- Customer segments
-- Revenue by acquisition channel
-- Purchase frequency
-- Top customer cohorts
+![Executive Overview](images/executive-overview.svg)
 
-### Page 3 — Product Analytics
-- Product/category revenue
-- Gross margin
-- Units sold
-- Return rate
-- High-sales / low-margin products
+### Customer Analytics
 
-### Page 4 — Retention & Returns
-- Repeat purchase rate
-- Return reasons
-- Products with abnormal return rates
-- Customer retention opportunities
+![Customer Analytics](images/customer-analytics.svg)
+
+### Product Analytics
+
+![Product Analytics](images/product-analytics.svg)
+
+### Retention & Returns
+
+![Retention and Returns](images/retention-returns.svg)
 
 ---
 
@@ -258,10 +243,10 @@ The project will explicitly validate:
 - [x] SQL analysis examples
 - [x] Python transformation workflow
 - [x] Power BI measure design
+- [x] Dashboard visuals
 - [ ] Final project dataset
 - [ ] Complete SQL analysis file
 - [ ] Complete Python notebook
-- [ ] Dashboard screenshots
 - [ ] Final findings and recommendations
 
 ---
